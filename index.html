@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+<meta charset="UTF-8">
+<title>Scenic Slider</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.js"></script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div ng-controller="sliderController" class="imageslide" ng-switch='slideshow'>
+    <div class="slider-content" ng-switch-when="1">
+        <img src="http://www.go4travelblog.com/wp-content/uploads/ngg_featured/Scenic-Lookout-1024x500.jpg" width="100%" height="400px"/>
+    </div>  
+    <div class="slider-content" ng-switch-when="2">
+        <img src="http://svcdn.simpleviewinc.com/v3/cache/www_exploreboone_com/56C58EA2B124FFAFD2BDBF75E7A2FD59.jpg" width="100%" height="400px"/>
+    </div>
+    <div class="slider-content" ng-switch-when="3">
+        <img src="http://hddesktopwallpapers.in/wp-content/uploads/2015/09/scenic-wallpaper-countryside-1024x500.jpg" width="100%" height="400px"/>
+    </div>  
+    <div class="slider-content" ng-switch-when="4">
+        <img src="http://cdn.mtlblog.com/uploads/2014/09/9-moreinheights.jpg" width="100%" height="400px"/>
+    </div>  
+</div>
+<script>
+    function sliderController($scope, $timeout) {
+     var slidesInSlideshow = 4;
+     var slidesTimeIntervalInMs = 3000; 
+
+     $scope.slideshow = 1;
+     var slideTimer =
+     $timeout(function interval() {
+         $scope.slideshow = ($scope.slideshow % slidesInSlideshow) + 1;
+         slideTimer = $timeout(interval, slidesTimeIntervalInMs);
+         }, slidesTimeIntervalInMs);
+     }
+ </script>
+    </body>
+
+    </html>
